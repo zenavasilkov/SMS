@@ -1,0 +1,61 @@
+﻿<UserControl x:Class="UniversityApp.WPF.Views.StudentsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:UniversityApp.WPF.Views"
+             xmlns:vm="clr-namespace:UniversityApp.WPF.ViewModels"
+             Background="Transparent">
+
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <DataGrid Grid.Row="0"
+                  ItemsSource="{Binding Students}"
+                  AutoGenerateColumns="False"
+                  CanUserAddRows="False"
+                  CanUserDeleteRows="False"
+                  HeadersVisibility="Column"
+                  RowHeaderWidth="0"
+                  Background="#353340"
+                  Foreground="White"
+                  FontFamily="Calibri"
+                  FontSize="14"
+                  BorderThickness="0"
+                  SelectionMode="Single"
+                  Margin="10 10 0 10"
+                  SelectedItem="{Binding SelectedStudent, Mode=TwoWay}"
+                  Style="{StaticResource DarkDataGrid}"> 
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Номер зачётки" Binding="{Binding RecordBookNumber}" />
+                <DataGridTextColumn Header="Фамилия" Binding="{Binding LastName}" />
+                <DataGridTextColumn Header="Имя" Binding="{Binding FirstName}" />
+                <DataGridTextColumn Header="Отчество" Binding="{Binding Patronymic}" />
+                <DataGridTextColumn Header="ID Группы" Binding="{Binding GroupID}" />
+                <DataGridTextColumn Header="Специальность" Binding="{Binding Group.Specialty}" />
+                <DataGridTextColumn Header="Сокр. название" Binding="{Binding Group.Abbreviation}" />
+                <DataGridTextColumn Header="Факультет" Binding="{Binding Group.Faculty}" />
+                <DataGridTextColumn Header="Год поступления" Binding="{Binding Group.YearOfAdmission}" />
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Left" Margin="0">
+            <RadioButton Content="УСПЕВАЕМОСТЬ"
+                         Height="50"
+                         Width="200"
+                         Margin="120,0,0,0"
+                         Foreground="#CFCFCF"
+                         FontSize="14"
+                         Style="{StaticResource MenuButtonTheme}"/>
+
+            <RadioButton Content="О ГРУППЕ"
+                         Height="50"
+                         Width="200"
+                         Margin="130,0,0,0"
+                         Foreground="#CFCFCF"
+                         FontSize="14"
+                         Style="{StaticResource MenuButtonTheme}"/>
+        </StackPanel>
+    </Grid>
+</UserControl>
